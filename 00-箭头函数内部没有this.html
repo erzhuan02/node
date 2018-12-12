@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // let obj = {
+        //     name: '俊俊',
+        //     age: 28,
+        //     sex: '女',
+        //     say:function () {
+        //         console.log(this);    //this.obj      
+        //         let that = this; //保存外部this         
+        //         setTimeout(function () {
+        //             console.log(this);  //this->window                    
+        //             console.log(that.name);                    
+        //         },500)
+        //     }
+        // }
+            // 
+        let obj = {
+            name: '俊俊',
+            age: 28,
+            sex: '女',
+            say:function () {
+                console.log(this);    //this.obj      
+              
+                setTimeout( (n1,n2) => {
+                    console.log(this,arguments);  //this->obj                   
+                    console.log(this.name);   //俊俊                 
+                },500)
+            }
+        }
+
+
+        obj.say(1,2,3);
+
+        let Person = () => {
+            this.name = 'zs';
+            this.age = 18;
+            //在构造函数中this指向新创建实例
+        }
+
+        let p = new Person()//Person is not a constructor
+        console.log(p);
+        
+    </script>
+</body>
+</html>

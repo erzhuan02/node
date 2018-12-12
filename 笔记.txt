@@ -1,0 +1,127 @@
+1- 什么是node ？
+    基于chorme v8引擎 的 js的运行环境  
+
+2- es6语法 
+    var 
+    1 块级作用域
+    2 变量不提升 
+    3 不能重复定义 
+    let 
+    const  
+
+    数组的方法：
+    forEach()
+    map(); 
+    filter();  
+    some(); 
+    every();
+    find();
+    findIndex();
+
+    字符串的新方法：
+    startsWith();
+    endsWith();
+    includes(); 
+
+    let name = 'zs';
+    let obj = {
+        name, 
+        say() {
+            //。。。。
+        }
+    }
+
+    函数的默认参数 ：
+    function add(n1 =0 , n2 = 0) { }
+
+    箭头函数：
+    let 变量名 = (参数列表) =>  { 函数体 }
+    简写：
+     如果只有一个参数， （）可以省略 
+     如果函数体只有一行代码  {} 和 return 都可省略 
+
+    箭头函数内部没有this, 在箭头函数中使用的this是外部this；
+    箭头函数不能当做构造函数使用；
+
+
+
+fs模块
+    fs.readFile(路径， [编码], (err, data) => {})
+    fs.writeFlie(路径, 内容， [编码], (err) => {})
+    fs.appendFlie(路径, 内容， [编码], (err) => {})
+    fs.rename(oldpath, newpath, (err) => {})
+    fs.unlink(path, (err)=> {})
+
+
+http模块
+    req 请求报文对象 
+        req.url 
+        req.method 
+        req.headers 
+
+    res 响应报文对象
+       
+        res.statusCode = 200;
+        res.statusMessage = 'bbb';
+
+        res.setHeader(aaa, 'bbb');
+        res.writeHead(200, 'bbb', {k, v})
+
+        res.write();
+         res.end(); //告诉浏览器响应结束 
+
+
+
+复习： 
+    箭头函数： 
+        1- 内部没有this    
+        2- 不能当做构造函数使用 
+
+    global: 
+        全局模块 无需引入直接使用   
+        __dirname 当前文件绝对路径 
+        __filename 当前文件的绝对文件名  
+
+    fs模块 path模块  http模块 先引入后使用  
+
+    fs: 操作文件  
+        fs.readFile(path, [编码], (err, data) => {})
+        fs.writeFile(path, 内容，[编码], (err)=> {})
+        fs.appendFile(path, 内容，[编码], (err)=> {})
+        fs.rename(oldname ,newname, (err) => {})
+        fs.unlink(path, (err) => {})
+
+    路径： 
+        操作文件时，写相对路径 相对于node命令执行的位置， 而不是js文件所在的位置 
+        推荐使用 绝对来解决 
+        __dirname + '/data.txt'
+
+    path 模块 
+    path.join(); 可以来拼接路径，并可以解决不同系统之间路径分隔符兼容问题； 
+    path.join(__dirname, '../../', 'data.txt');
+
+
+    http模块 处理http请求 
+
+    const http = require('http');
+    const server  = http.createServer();
+    server.on('request', (req, res) => {
+        res.end('ok');
+    });
+    server.listen('9999', () => {....})
+
+    req: 
+        req.url 
+        req.method 
+        req.headers 
+
+    res: 
+        res.statusCode = 200;
+        res.statusMessage = 'aa';
+        res.setHeader('content-type', 'text/html;chaset=utf-8');
+        res.writeHead(200, 'aa', {k:v})
+        res.wirte(string);
+        res.end(); 
+
+    
+      
